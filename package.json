@@ -1,9 +1,12 @@
 {
-  "name": "proxer-firefox-extension",
-  "title": "Proxer-Firefox-Extension",
+  "name": "proxer-firefox-addon",
+  "title": "Proxer Firefox Addon",
   "id": "jid1-4lqkUrgvAt3aHA",
-  "description": "a basic add-on",
-  "author": "",
+  "description": "Addon to access Proxer.me from anywhere in your Browser!",
+  "author": "Toothwitch",
   "license": "MPL 2.0",
-  "version": "0.1"
+  "version": "0.1",
+  "permissions": {
+    "cross-domain-content": ["https://proxer.me"]
+  }
 }

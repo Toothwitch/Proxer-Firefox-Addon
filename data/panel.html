@@ -1,5 +1,39 @@
 <html>
 <body>
 <div id="content"></div>
+<script type="text/javascript">
+document.onkeydown = function(e){
+	if(e.keyCode == 13){
+			var username = document.getElementById("username").value;
+			alert(username);
+			var pass = document.getElementById("pass").value;
+			alert(pass);
+			document.getElementById("content").innerHTML = "Processing...";
+			
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "https://proxer.me/login?format=json&action=login", true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4) {
+					// JSON.parse does not evaluate the attacker's scripts.
+					var resp = JSON.parse(xhr.responseText);
+					alert(xhr.responseText);
+					alert(resp.message);
+					if(resp.error == 0){
+						document.getElementById("content").innerHTML = "Willkommen "+username.toString()+"!";
+					}else{
+						document.getElementById("content").innerHTML = "Fehler";
+					}
+					
+				}
+			}
+			var data = new FormData();
+			data.append('username', username);
+			data.append('password', pass);
+			xhr.send(data);
+		
+	}else{
+	}
+}
+</script>
 </body>
 </html>
